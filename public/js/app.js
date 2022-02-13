@@ -19410,6 +19410,7 @@ __webpack_require__.r(__webpack_exports__);
         'result': '',
         'alert': false
       }],
+      'guess': [],
       "error": false
     };
   },
@@ -19426,7 +19427,14 @@ __webpack_require__.r(__webpack_exports__);
           letter.alert = true;
         }
       });
-      axios.get('/list').then(function (response) {
+
+      if (this.guess.length == 0) {
+        this.guess.push(this.letters);
+      }
+
+      axios.post('/guess', {
+        'guess': this.guess
+      }).then(function (response) {
         console.log(response);
       });
     }

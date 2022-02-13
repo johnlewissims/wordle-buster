@@ -63,11 +63,26 @@
                     {'value': '', 'result': '', 'alert': false},
                     {'value': '', 'result': '', 'alert': false}
                 ],
+                'guess': [],
                 "error": false
             };
         },
         methods: {
             submit() {
+                let verified = this.verifyGuess();
+
+                if(verified) {
+                    if(this.guess.length == 0) {
+                        this.guess.push(this.letters);
+                    }
+
+                    axios.post('/guess', {'guess': this.guess})
+                        .then((response) => {
+                            console.log(response)
+                        })
+                }
+            },
+            verifyGuess() {
                 this.error = false;
                 this.letters.forEach(letter => {
                     letter.alert = false;
@@ -76,11 +91,7 @@
                         letter.alert = true;
                     }
                 });
-
-                axios.get('/list')
-                    .then((response)=>{
-                       console.log(response)
-                    })
+                return this.error;
             }
         }
     };
