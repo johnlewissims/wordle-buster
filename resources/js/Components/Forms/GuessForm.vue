@@ -35,12 +35,16 @@
                                 </svg>
                             </button>
                         </div>
+                        <span class="flex h-3 w-3 ping-alert" v-if="letter.alert">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                        </span>
                     </div>
                 </div>
 
                 <div v-if="error" class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 alert" role="alert">
                     <p class="font-bold">Almost!</p>
-                    <p>Make sure you have a letter in each field and </p>
+                    <p>Make sure you have a letter and a result in each field.</p>
                 </div>
 
             </div>
@@ -53,11 +57,11 @@
         data () {
             return {
                 'letters': [
-                    {'value': '', 'result': ''},
-                    {'value': '', 'result': ''},
-                    {'value': '', 'result': ''},
-                    {'value': '', 'result': ''},
-                    {'value': '', 'result': ''}
+                    {'value': '', 'result': '', 'alert': false},
+                    {'value': '', 'result': '', 'alert': false},
+                    {'value': '', 'result': '', 'alert': false},
+                    {'value': '', 'result': '', 'alert': false},
+                    {'value': '', 'result': '', 'alert': false}
                 ],
                 "error": false
             };
@@ -66,9 +70,10 @@
             submit() {
                 this.error = false;
                 this.letters.forEach(letter => {
+                    letter.alert = false;
                     if(letter.value == '' || letter.result == '') {
-                        console.log(this.letters);
                         this.error = true;
+                        letter.alert = true;
                     }
                 });
             }
@@ -134,8 +139,15 @@
 .guess-wrapper .alert {
     position: absolute;
     bottom: -120px;
-    left: 53px;
+    left: 0px;
+    width: 100%;
     transition: all .2s ease;
+}
+
+.ping-alert {
+    position: absolute;
+    top: -4px;
+    right: 2px;
 }
 
 </style>
