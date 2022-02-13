@@ -76,6 +76,11 @@
                         letter.alert = true;
                     }
                 });
+
+                axios.get('/list')
+                    .then((response)=>{
+                       console.log(response)
+                    })
             }
         }
     };
