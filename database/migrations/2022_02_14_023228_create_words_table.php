@@ -14,8 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('words', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('word');
-            $table->bigInteger('score');
+            $table->float('score');
+            $table->float('letter_frequency_score');
         });
     }
 
