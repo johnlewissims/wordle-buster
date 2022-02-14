@@ -19389,7 +19389,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      'letters': [{
+      'guesses': [[{
+        'value': '',
+        'result': '',
+        'alert': false
+      }, {
+        'value': '',
+        'result': '',
+        'alert': false
+      }, {
+        'value': '',
+        'result': '',
+        'alert': false
+      }, {
+        'value': '',
+        'result': '',
+        'alert': false
+      }, {
+        'value': '',
+        'result': '',
+        'alert': false
+      }]],
+      'guess': [],
+      'blankGuess': [{
         'value': '',
         'result': '',
         'alert': false
@@ -19410,7 +19432,6 @@ __webpack_require__.r(__webpack_exports__);
         'result': '',
         'alert': false
       }],
-      'guess': [],
       "error": false
     };
   },
@@ -19418,25 +19439,38 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      this.error = false;
-      this.letters.forEach(function (letter) {
-        letter.alert = false;
+      var error = this.verifyGuess();
+      console.log(error);
 
-        if (letter.value == '' || letter.result == '') {
-          _this.error = true;
-          letter.alert = true;
+      if (!error) {
+        if (this.guess.length == 0) {
+          this.guess.push(this.guesses);
         }
-      });
 
-      if (this.guess.length == 0) {
-        this.guess.push(this.letters);
+        axios.post('/guess', {
+          'guess': this.guess[0]
+        }).then(function (response) {
+          if (_this.guesses.length < 6) {
+            _this.guesses.push(_this.blankGuess);
+          }
+        });
       }
+    },
+    verifyGuess: function verifyGuess() {
+      var _this2 = this;
 
-      axios.post('/guess', {
-        'guess': this.guess
-      }).then(function (response) {
-        console.log(response);
+      this.error = false;
+      this.guesses.forEach(function (guess) {
+        guess.forEach(function (letter) {
+          letter.alert = false;
+
+          if (letter.value == '' || letter.result == '') {
+            _this2.error = true;
+            letter.alert = true;
+          }
+        });
       });
+      return this.error;
     }
   }
 });
@@ -19516,7 +19550,7 @@ var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
 
 var _hoisted_6 = [_hoisted_5];
 var _hoisted_7 = {
-  "class": "flex"
+  "class": ""
 };
 var _hoisted_8 = ["onUpdate:modelValue"];
 var _hoisted_9 = {
@@ -19630,39 +19664,48 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = function () {
       return $options.submit && $options.submit.apply($options, arguments);
     })
-  }, _hoisted_6)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.letters, function (letter, index) {
+  }, _hoisted_6)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.guesses, function (guess, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-      "class": "letter",
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["guess-row flex", 'guess-row-' + index]),
       key: index
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["h-16 w-16 border mx-2 rounded-lg flex items-center text-center font-bold text-3xl uppercase", 'result' + letter.result]),
-      "onUpdate:modelValue": function onUpdateModelValue($event) {
-        return letter.value = $event;
-      }
-    }, null, 10
-    /* CLASS, PROPS */
-    , _hoisted_8), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, letter.value]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      onClick: function onClick($event) {
-        return letter.result = 1;
-      },
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(letter.result === 1 ? 'button-active' : 'button-inactive')
-    }, _hoisted_12, 10
-    /* CLASS, PROPS */
-    , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      onClick: function onClick($event) {
-        return letter.result = 2;
-      },
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(letter.result === 2 ? 'button-active' : 'button-inactive')
-    }, _hoisted_15, 10
-    /* CLASS, PROPS */
-    , _hoisted_13), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      onClick: function onClick($event) {
-        return letter.result = 3;
-      },
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(letter.result === 3 ? 'button-active' : 'button-inactive')
-    }, _hoisted_18, 10
-    /* CLASS, PROPS */
-    , _hoisted_16)]), letter.alert ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_19, _hoisted_22)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+    }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(guess, function (letter, index) {
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+        "class": "letter",
+        key: index
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["h-16 w-16 border mx-2 rounded-lg flex items-center text-center font-bold text-3xl uppercase", 'result' + letter.result]),
+        "onUpdate:modelValue": function onUpdateModelValue($event) {
+          return letter.value = $event;
+        }
+      }, null, 10
+      /* CLASS, PROPS */
+      , _hoisted_8), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, letter.value]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        onClick: function onClick($event) {
+          return letter.result = 1;
+        },
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(letter.result === 1 ? 'button-active' : 'button-inactive')
+      }, _hoisted_12, 10
+      /* CLASS, PROPS */
+      , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        onClick: function onClick($event) {
+          return letter.result = 2;
+        },
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(letter.result === 2 ? 'button-active' : 'button-inactive')
+      }, _hoisted_15, 10
+      /* CLASS, PROPS */
+      , _hoisted_13), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        onClick: function onClick($event) {
+          return letter.result = 3;
+        },
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(letter.result === 3 ? 'button-active' : 'button-inactive')
+      }, _hoisted_18, 10
+      /* CLASS, PROPS */
+      , _hoisted_16)]), letter.alert ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_19, _hoisted_22)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+    }), 128
+    /* KEYED_FRAGMENT */
+    ))], 2
+    /* CLASS */
+    );
   }), 128
   /* KEYED_FRAGMENT */
   ))]), $data.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_23, _hoisted_26)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]);
@@ -19739,7 +19782,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.guess-wrapper[data-v-ed95b7c0] {\n    padding-bottom: 41px;\n    position: relative;\n}\n.letter[data-v-ed95b7c0] {\n    position: relative;\n}\n.letter .button-wrapper[data-v-ed95b7c0] {\n    position: absolute;\n    bottom: -35px;\n    left: 4px;\n}\n.button-wrapper button[data-v-ed95b7c0] {\n    transition: all .3s ease;\n    opacity: .3;\n}\n.button-wrapper .button-inactive[data-v-ed95b7c0] {\n    opacity: .3;\n}\n.button-wrapper .button-active[data-v-ed95b7c0] {\n    opacity: 1;\n}\n.guess-label[data-v-ed95b7c0] {\n    position: relative;\n}\n.guess-label button[data-v-ed95b7c0] {\n    position: absolute;\n    right: 10px;\n    top: 5px;\n}\n.result1[data-v-ed95b7c0] {\n    background: green;\n    color: #fff;\n}\n.result2[data-v-ed95b7c0] {\n    background: grey;\n    color: #fff;\n}\n.result3[data-v-ed95b7c0] {\n    background: #c9b458;;\n    color: #fff;\n}\n.guess-wrapper .alert[data-v-ed95b7c0] {\n    position: absolute;\n    bottom: -120px;\n    left: 0px;\n    width: 100%;\n    transition: all .2s ease;\n}\n.ping-alert[data-v-ed95b7c0] {\n    position: absolute;\n    top: -4px;\n    right: 2px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.guess-wrapper[data-v-ed95b7c0] {\n    padding-bottom: 41px;\n    position: relative;\n}\n.letter[data-v-ed95b7c0] {\n    position: relative;\n}\n.letter .button-wrapper[data-v-ed95b7c0] {\n    position: absolute;\n    bottom: -35px;\n    left: 4px;\n}\n.button-wrapper button[data-v-ed95b7c0] {\n    transition: all .3s ease;\n    opacity: .3;\n}\n.button-wrapper .button-inactive[data-v-ed95b7c0] {\n    opacity: .3;\n}\n.button-wrapper .button-active[data-v-ed95b7c0] {\n    opacity: 1;\n}\n.guess-label[data-v-ed95b7c0] {\n    position: relative;\n}\n.guess-label button[data-v-ed95b7c0] {\n    position: absolute;\n    right: 10px;\n    top: 5px;\n}\n.result1[data-v-ed95b7c0] {\n    background: green;\n    color: #fff;\n}\n.result2[data-v-ed95b7c0] {\n    background: grey;\n    color: #fff;\n}\n.result3[data-v-ed95b7c0] {\n    background: #c9b458;;\n    color: #fff;\n}\n.guess-wrapper .alert[data-v-ed95b7c0] {\n    position: absolute;\n    bottom: -120px;\n    left: 0px;\n    width: 100%;\n    transition: all .2s ease;\n}\n.ping-alert[data-v-ed95b7c0] {\n    position: absolute;\n    top: -4px;\n    right: 2px;\n}\n.guess-row[data-v-ed95b7c0] {\n    margin-top: 40px;\n}\n.guess-row-0[data-v-ed95b7c0] {\n    margin-top: 0px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -11,34 +11,36 @@
                         </svg>
                     </button>
                 </div>
-                <div class="flex">
-                    <div class="letter" v-for="(letter, index) in letters" :key="index">
-                        <input 
-                            class="h-16 w-16 border mx-2 rounded-lg flex items-center text-center font-bold text-3xl uppercase"
-                            :class="'result' + letter.result"
-                            v-model="letter.value"
-                        >
-                        <div class="button-wrapper">
-                            <button @click="letter.result = 1" :class="(letter.result === 1) ? 'button-active' : 'button-inactive'">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </button>
-                            <button @click="letter.result = 2" :class="(letter.result === 2) ? 'button-active' : 'button-inactive'">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-                                </svg>
-                            </button>
-                            <button @click="letter.result = 3" :class="(letter.result === 3) ? 'button-active' : 'button-inactive'">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </button>
-                        </div>
-                        <span class="flex h-3 w-3 ping-alert" v-if="letter.alert">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
-                        </span>
+                <div class="">
+                    <div class="guess-row flex" :class="'guess-row-' + index" v-for="(guess, index) in guesses" :key="index">
+                        <div class="letter" v-for="(letter, index) in guess" :key="index">
+                            <input 
+                                class="h-16 w-16 border mx-2 rounded-lg flex items-center text-center font-bold text-3xl uppercase"
+                                :class="'result' + letter.result"
+                                v-model="letter.value"
+                            >
+                            <div class="button-wrapper">
+                                <button @click="letter.result = 1" :class="(letter.result === 1) ? 'button-active' : 'button-inactive'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                                <button @click="letter.result = 2" :class="(letter.result === 2) ? 'button-active' : 'button-inactive'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                                    </svg>
+                                </button>
+                                <button @click="letter.result = 3" :class="(letter.result === 3) ? 'button-active' : 'button-inactive'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <span class="flex h-3 w-3 ping-alert" v-if="letter.alert">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                            </span>
+                        </div>                                
                     </div>
                 </div>
 
@@ -56,40 +58,55 @@
     export default {
         data () {
             return {
-                'letters': [
+                'guesses': [
+                    [
+                        {'value': '', 'result': '', 'alert': false},
+                        {'value': '', 'result': '', 'alert': false},
+                        {'value': '', 'result': '', 'alert': false},
+                        {'value': '', 'result': '', 'alert': false},
+                        {'value': '', 'result': '', 'alert': false}
+                    ]
+                ],
+                'guess': [],
+                'blankGuess': [
                     {'value': '', 'result': '', 'alert': false},
                     {'value': '', 'result': '', 'alert': false},
                     {'value': '', 'result': '', 'alert': false},
                     {'value': '', 'result': '', 'alert': false},
                     {'value': '', 'result': '', 'alert': false}
                 ],
-                'guess': [],
                 "error": false
             };
         },
         methods: {
             submit() {
-                let verified = this.verifyGuess();
+                let error = this.verifyGuess();
 
-                if(verified) {
+                console.log(error);
+
+                if(!error) {
                     if(this.guess.length == 0) {
-                        this.guess.push(this.letters);
+                        this.guess.push(this.guesses);
                     }
 
-                    axios.post('/guess', {'guess': this.guess})
+                    axios.post('/guess', {'guess': this.guess[0]})
                         .then((response) => {
-                            console.log(response)
+                            if(this.guesses.length < 6) {
+                                this.guesses.push(...this.blankGuess);
+                            }
                         })
                 }
             },
             verifyGuess() {
                 this.error = false;
-                this.letters.forEach(letter => {
-                    letter.alert = false;
-                    if(letter.value == '' || letter.result == '') {
-                        this.error = true;
-                        letter.alert = true;
-                    }
+                this.guesses.forEach(guess => {
+                    guess.forEach(letter => {
+                        letter.alert = false;
+                        if(letter.value == '' || letter.result == '') {
+                            this.error = true;
+                            letter.alert = true;
+                        }
+                    })
                 });
                 return this.error;
             }
@@ -164,6 +181,14 @@
     position: absolute;
     top: -4px;
     right: 2px;
+}
+
+.guess-row {
+    margin-top: 40px;
+}
+
+.guess-row-0 {
+    margin-top: 0px;
 }
 
 </style>
