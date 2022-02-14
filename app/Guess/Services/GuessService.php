@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 class GuessService
 {
 
-    const API_URI = "https://api.datamuse.com/words?sp=";
+    const BASE_WHERE_POSITION_IS = " AND POSITION('letter' IN words.word) = position";
+    const BASE_WHERE_POSITION_IS_NOT = " AND POSITION('letter' IN words.word) != position";
+    const BASE_WHERE_CONTAINS = " AND POSITION('letter' IN words.word) != 0";
+    const BASE_WHERE_DOES_NOT_CONTAIN = " AND POSITION('letter' IN words.word) = 0";
+    const ORDER_BY = " ORDER BY score DESC";
 
     public function sortLetters($guessArray){
         $blacklistedLetters = [];
@@ -34,17 +38,39 @@ class GuessService
         ];
     }
 
-    public function createUrl($letterArray) {
-        $query = '';
-        foreach($letterArray as $letter) {
-            if($letter === '') {
-                $query = $query . '?';
-            } else {
-                $query = $query . $letter;
+    public function makeQuery($letterArray) {
+        $query = 'SELECT * FROM words';
+        foreach($letterArray['correctlyPlaced'] as $index => $correct) {
+            if(!empty($correct)) {
+                $whereStringReplaced = str_replace(['letter', 'position'], [$correct, $index + 1], self::BASE_WHERE_POSITION_IS);
+                $query = $query . $whereStringReplaced;
             }
         }
-        return self::API_URI . $query;
-    }    
+
+        foreach($letterArray['blacklisted'] as $blackListed) {
+            $whereStringReplaced = str_replace(['letter'], [$blackListed], self::BASE_WHERE_DOES_NOT_CONTAIN);
+            $query = $query . $whereStringReplaced;
+        }
+
+        foreach($letterArray['incorrectlyplaced'] as $index => $incorrect) {
+            foreach($incorrect as $letter) {
+                $whereStringReplaced = str_replace(['letter', 'position'], [$letter, $index + 1], self::BASE_WHERE_POSITION_IS_NOT);
+                $query = $query . $whereStringReplaced;
+                
+                $whereStringReplaced = str_replace(['letter'], [$letter], self::BASE_WHERE_CONTAINS);
+                $query = $query . $whereStringReplaced;
+            }
+        }
+
+        $pos = strpos($query, 'AND');
+        if ($pos !== false) {
+            $query = substr_replace($query, 'WHERE', $pos, strlen('AND'));
+        }
+
+        $query = $query . self::ORDER_BY;
+
+        return $query;
+    }
 
     public function search($url) {
         try {
@@ -58,23 +84,6 @@ class GuessService
         } catch(Exception $e) {
             return false;
         }
-    }
-
-    public function removeByBlacklistedLetters($options, $blacklistedLetters) {
-        foreach($options as $key => $word) {
-            foreach($blacklistedLetters as $letter) {
-              if(str_contains(strtoupper($word->word), $letter)) {
-                unset($options[$key]);
-              }
-            }
-            // $letterArray = str_split($word->word);
-            // foreach($blacklistedLettersByPosition as $letterPosition => $letter) {
-            //   if(in_array($letter, [$letterArray[$letterPosition]])) {
-            //     unset($result[$key]);
-            //   };
-            // }
-          }
-          return $options;
     }
 
 }

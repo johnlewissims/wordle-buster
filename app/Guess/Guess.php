@@ -3,7 +3,10 @@
 namespace App\Guess;
 
 use App\Guess\Services\GuessService;
+use App\Models\Word;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Guess
 {
@@ -15,12 +18,12 @@ class Guess
 
     public function makeGuess(Request $request) {
         $sortedLetters = $this->guessService->sortLetters($request->get('guess'));
-        $url = $this->guessService->createUrl($sortedLetters['correctlyPlaced']);
-        $result = $this->guessService->search($url);
+        $query = $this->guessService->makeQuery($sortedLetters);
 
-        $blacklistRemoved = $this->guessService->removeByBlacklistedLetters($result, $sortedLetters['blacklisted']);
+        $wordData = DB::select($query);
+        $wordModels = Word::hydrate($wordData)->sortByDesc('score');
 
-        return $blacklistRemoved;
+        return ['options' => $wordModels];
     }
 
 
