@@ -19410,7 +19410,6 @@ __webpack_require__.r(__webpack_exports__);
         'result': '',
         'alert': false
       }]],
-      'guess': [],
       'blankGuess': [{
         'value': '',
         'result': '',
@@ -19432,7 +19431,10 @@ __webpack_require__.r(__webpack_exports__);
         'result': '',
         'alert': false
       }],
-      "error": false
+      "error": false,
+      "count": 6016,
+      "bestGuess": null,
+      "options": null
     };
   },
   methods: {
@@ -19440,19 +19442,18 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var error = this.verifyGuess();
-      console.log(error);
 
       if (!error) {
-        if (this.guess.length == 0) {
-          this.guess.push(this.guesses);
-        }
-
         axios.post('/guess', {
-          'guess': this.guess[0]
+          'guess': this.guesses
         }).then(function (response) {
           if (_this.guesses.length < 6) {
-            _this.guesses.push(_this.blankGuess);
+            _this.guesses.push(JSON.parse(JSON.stringify(_this.blankGuess)));
           }
+
+          _this.count = response.data.count;
+          _this.bestGuess = response.data.best_guess;
+          _this.options = response.data.options;
         });
       }
     },
@@ -19639,12 +19640,24 @@ var _hoisted_21 = /*#__PURE__*/_withScopeId(function () {
 
 var _hoisted_22 = [_hoisted_20, _hoisted_21];
 var _hoisted_23 = {
+  "class": "count-box font-normal px-2"
+};
+
+var _hoisted_24 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": "font-thin px-2"
+  }, "Possible Answers", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_25 = {
   key: 0,
   "class": "bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 alert",
   role: "alert"
 };
 
-var _hoisted_24 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_26 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
     "class": "font-bold"
   }, "Almost!", -1
@@ -19652,22 +19665,57 @@ var _hoisted_24 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_25 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_27 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Make sure you have a letter and a result in each field.", -1
   /* HOISTED */
   );
 });
 
-var _hoisted_26 = [_hoisted_24, _hoisted_25];
+var _hoisted_28 = [_hoisted_26, _hoisted_27];
+var _hoisted_29 = {
+  key: 1,
+  "class": "answers-box bg-white rounded-lg shadow p-4"
+};
+var _hoisted_30 = {
+  "class": "font-thin px-2 pb-4 text-lg"
+};
+
+var _hoisted_31 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
+    "class": "font-bold"
+  }, "Most likely answers...", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_32 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", {
+    style: {
+      "margin-bottom": "15px",
+      "margin-top": "15px"
+    }
+  }, null, -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_33 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
+    "class": "font-bold"
+  }, "Best answers for narrowing down options...", -1
+  /* HOISTED */
+  );
+});
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function () {
       return $options.submit && $options.submit.apply($options, arguments);
     })
-  }, _hoisted_6)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.guesses, function (guess, index) {
+  }, _hoisted_6)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.guesses, function (guess, guessIndex) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["guess-row flex", 'guess-row-' + index]),
-      key: index
+      "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["guess-row flex", 'guess-row-' + guessIndex]),
+      key: guessIndex
     }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(guess, function (letter, index) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
         "class": "letter",
@@ -19708,7 +19756,39 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     );
   }), 128
   /* KEYED_FRAGMENT */
-  ))]), $data.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_23, _hoisted_26)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]);
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
+    name: "slide-fade",
+    mode: "out-in",
+    "class": "count-number"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+        key: $data.count,
+        "class": "font-bold px-2"
+      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.count), 1
+      /* TEXT */
+      ))];
+    }),
+    _: 1
+    /* STABLE */
+
+  }), _hoisted_24]), $data.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_25, _hoisted_28)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.options ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.options, function (option, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
+      key: index
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option.word), 1
+    /* TEXT */
+    );
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))]), _hoisted_32, _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.bestGuess, function (guess, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
+      key: index
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(guess.word), 1
+    /* TEXT */
+    );
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]);
 }
 
 /***/ }),
@@ -19782,7 +19862,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.guess-wrapper[data-v-ed95b7c0] {\n    padding-bottom: 41px;\n    position: relative;\n}\n.letter[data-v-ed95b7c0] {\n    position: relative;\n}\n.letter .button-wrapper[data-v-ed95b7c0] {\n    position: absolute;\n    bottom: -35px;\n    left: 4px;\n}\n.button-wrapper button[data-v-ed95b7c0] {\n    transition: all .3s ease;\n    opacity: .3;\n}\n.button-wrapper .button-inactive[data-v-ed95b7c0] {\n    opacity: .3;\n}\n.button-wrapper .button-active[data-v-ed95b7c0] {\n    opacity: 1;\n}\n.guess-label[data-v-ed95b7c0] {\n    position: relative;\n}\n.guess-label button[data-v-ed95b7c0] {\n    position: absolute;\n    right: 10px;\n    top: 5px;\n}\n.result1[data-v-ed95b7c0] {\n    background: green;\n    color: #fff;\n}\n.result2[data-v-ed95b7c0] {\n    background: grey;\n    color: #fff;\n}\n.result3[data-v-ed95b7c0] {\n    background: #c9b458;;\n    color: #fff;\n}\n.guess-wrapper .alert[data-v-ed95b7c0] {\n    position: absolute;\n    bottom: -120px;\n    left: 0px;\n    width: 100%;\n    transition: all .2s ease;\n}\n.ping-alert[data-v-ed95b7c0] {\n    position: absolute;\n    top: -4px;\n    right: 2px;\n}\n.guess-row[data-v-ed95b7c0] {\n    margin-top: 40px;\n}\n.guess-row-0[data-v-ed95b7c0] {\n    margin-top: 0px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.guess-wrapper[data-v-ed95b7c0] {\n    padding-bottom: 41px;\n    position: relative;\n}\n.letter[data-v-ed95b7c0] {\n    position: relative;\n}\n.letter .button-wrapper[data-v-ed95b7c0] {\n    position: absolute;\n    bottom: -35px;\n    left: 4px;\n}\n.button-wrapper button[data-v-ed95b7c0] {\n    transition: all .3s ease;\n    opacity: .3;\n}\n.button-wrapper .button-inactive[data-v-ed95b7c0] {\n    opacity: .3;\n}\n.button-wrapper .button-active[data-v-ed95b7c0] {\n    opacity: 1;\n}\n.guess-label[data-v-ed95b7c0] {\n    position: relative;\n}\n.guess-label button[data-v-ed95b7c0] {\n    position: absolute;\n    right: 10px;\n    top: 5px;\n}\n.result1[data-v-ed95b7c0] {\n    background: green;\n    color: #fff;\n}\n.result2[data-v-ed95b7c0] {\n    background: grey;\n    color: #fff;\n}\n.result3[data-v-ed95b7c0] {\n    background: #c9b458;;\n    color: #fff;\n}\n.guess-wrapper .alert[data-v-ed95b7c0] {\n    position: absolute;\n    bottom: -90px;\n    left: 0px;\n    width: 100%;\n    transition: all .2s ease;\n}\n.ping-alert[data-v-ed95b7c0] {\n    position: absolute;\n    top: -4px;\n    right: 2px;\n}\n.guess-row[data-v-ed95b7c0] {\n    margin-top: 40px;\n}\n.guess-row-0[data-v-ed95b7c0] {\n    margin-top: 0px;\n}\n.count-box[data-v-ed95b7c0] {\n    text-align: center;\n    position: absolute;\n    bottom: -55px;\n    left: 0px;\n    padding: 15px;\n    right: 0px;\n    display: flex;\n    justify-content: center;\n}\n.slide-fade-enter-active[data-v-ed95b7c0] {\n    transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-ed95b7c0] {\n    transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-ed95b7c0], .slide-fade-leave-to[data-v-ed95b7c0] {\n    opacity: 0;\n}\n.count-number[data-v-ed95b7c0] {\n    padding-right: 5px;\n}\n.answers-box[data-v-ed95b7c0] {\n    position: absolute;\n    right: -100%;\n    top: 0px;\n    width: 95%;\n}\n.answers-box span[data-v-ed95b7c0] {\n    padding-right: 5px;\n    display: inline-block;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

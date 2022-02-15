@@ -21,10 +21,10 @@ class Guess
         $query = $this->guessService->makeQuery($sortedLetters);
 
         $wordData = DB::select($query);
-        $wordModels = Word::hydrate($wordData)->sortByDesc('score')->take(10);
-        $wordLetterFrequency = Word::hydrate($wordData)->sortByDesc('letter_frequency_score')->take(10);
+        $wordModels = Word::hydrate($wordData)->sortByDesc('score');
+        $wordLetterFrequency = Word::hydrate($wordData)->sortByDesc('letter_frequency_score');
 
-        return ['options' => $wordModels, 'best_guess' => $wordLetterFrequency];
+        return ['options' => $wordModels->take(20), 'best_guess' => $wordLetterFrequency->take(5), 'count' => $wordModels->count()];
     }
 
     protected function calculateWordFrequency() {

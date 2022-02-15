@@ -12,7 +12,7 @@
                     </button>
                 </div>
                 <div class="">
-                    <div class="guess-row flex" :class="'guess-row-' + index" v-for="(guess, index) in guesses" :key="index">
+                    <div class="guess-row flex" :class="'guess-row-' + guessIndex" v-for="(guess, guessIndex) in guesses" :key="guessIndex">
                         <div class="letter" v-for="(letter, index) in guess" :key="index">
                             <input 
                                 class="h-16 w-16 border mx-2 rounded-lg flex items-center text-center font-bold text-3xl uppercase"
@@ -44,9 +44,28 @@
                     </div>
                 </div>
 
+                <div class="count-box font-normal px-2">
+                    <transition name="slide-fade" mode="out-in" class="count-number">
+                        <div :key="count" class="font-bold px-2">
+                            {{ count }}
+                        </div>
+                    </transition> 
+                    <span class="font-thin px-2">Possible Answers</span>
+                </div>
+
                 <div v-if="error" class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 alert" role="alert">
                     <p class="font-bold">Almost!</p>
                     <p>Make sure you have a letter and a result in each field.</p>
+                </div>
+
+                <div class="answers-box bg-white rounded-lg shadow p-4" v-if="options">
+                    <div class="font-thin px-2 pb-4 text-lg">
+                        <h4 class="font-bold">Most likely answers...</h4> 
+                        <p><span v-for="(option, index) in options" :key="index"> {{option.word}} </span></p>
+                        <hr style="margin-bottom: 15px; margin-top: 15px;">
+                        <h4 class="font-bold">Best answers for narrowing down options...</h4>
+                        <p><span v-for="(guess, index) in bestGuess" :key="index"> {{guess.word}} </span></p>
+                    </div>
                 </div>
 
             </div>
@@ -67,33 +86,33 @@
                         {'value': '', 'result': '', 'alert': false}
                     ]
                 ],
-                'guess': [],
                 'blankGuess': [
-                    {'value': '', 'result': '', 'alert': false},
-                    {'value': '', 'result': '', 'alert': false},
-                    {'value': '', 'result': '', 'alert': false},
-                    {'value': '', 'result': '', 'alert': false},
-                    {'value': '', 'result': '', 'alert': false}
+                        {'value': '', 'result': '', 'alert': false},
+                        {'value': '', 'result': '', 'alert': false},
+                        {'value': '', 'result': '', 'alert': false},
+                        {'value': '', 'result': '', 'alert': false},
+                        {'value': '', 'result': '', 'alert': false}
                 ],
-                "error": false
+                "error": false,
+                "count": 6016,
+                "bestGuess": null,
+                "options": null
             };
         },
         methods: {
             submit() {
                 let error = this.verifyGuess();
 
-                console.log(error);
-
                 if(!error) {
-                    if(this.guess.length == 0) {
-                        this.guess.push(this.guesses);
-                    }
-
-                    axios.post('/guess', {'guess': this.guess[0]})
+                    axios.post('/guess', {'guess': this.guesses})
                         .then((response) => {
                             if(this.guesses.length < 6) {
-                                this.guesses.push(...this.blankGuess);
+                                this.guesses.push(JSON.parse(JSON.stringify(this.blankGuess)));
                             }
+
+                            this.count = response.data.count;
+                            this.bestGuess = response.data.best_guess;
+                            this.options = response.data.options;
                         })
                 }
             },
@@ -171,7 +190,7 @@
 
 .guess-wrapper .alert {
     position: absolute;
-    bottom: -120px;
+    bottom: -90px;
     left: 0px;
     width: 100%;
     transition: all .2s ease;
@@ -189,6 +208,43 @@
 
 .guess-row-0 {
     margin-top: 0px;
+}
+
+.count-box {
+    text-align: center;
+    position: absolute;
+    bottom: -55px;
+    left: 0px;
+    padding: 15px;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.slide-fade-enter-active {
+    transition: all .3s ease;
+}
+.slide-fade-leave-active {
+    transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+    opacity: 0;
+}
+
+.count-number {
+    padding-right: 5px;
+}
+
+.answers-box {
+    position: absolute;
+    right: -100%;
+    top: 0px;
+    width: 95%;
+}
+
+.answers-box span {
+    padding-right: 5px;
+    display: inline-block;
 }
 
 </style>
