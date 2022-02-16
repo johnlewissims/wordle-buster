@@ -19518,45 +19518,48 @@ var _withScopeId = function _withScopeId(n) {
 };
 
 var _hoisted_1 = {
-  "class": "fixed inset-0 w-full h-full flex bg-blue-100 items-center justify-center"
+  "class": "fixed inset-0 w-full h-full flex bg-blue-100 items-center justify-center wordle-buster-wrapper"
 };
 var _hoisted_2 = {
   "class": "bg-white rounded-lg shadow p-4 guess-wrapper",
   "x-data": "app()"
 };
-var _hoisted_3 = {
-  "class": "font-thin px-2 pb-4 text-lg guess-label"
+
+var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "font-thin px-2 pb-4 text-lg guess-label"
+  }, " Enter your guess here ", -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_4 = {
+  "class": ""
 };
+var _hoisted_5 = ["onUpdate:modelValue"];
+var _hoisted_6 = {
+  "class": "button-wrapper"
+};
+var _hoisted_7 = ["onClick"];
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Enter your guess here ");
-
-var _hoisted_5 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_8 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    "class": "h-5 w-5",
-    viewBox: "0 0 20 20",
-    fill: "currentColor"
+    "class": "h-6 w-6",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    stroke: "currentColor"
   }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-    "fill-rule": "evenodd",
-    d: "M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z",
-    "clip-rule": "evenodd"
-  }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-    "fill-rule": "evenodd",
-    d: "M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z",
-    "clip-rule": "evenodd"
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+    "stroke-width": "2",
+    d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
   })], -1
   /* HOISTED */
   );
 });
 
-var _hoisted_6 = [_hoisted_5];
-var _hoisted_7 = {
-  "class": ""
-};
-var _hoisted_8 = ["onUpdate:modelValue"];
-var _hoisted_9 = {
-  "class": "button-wrapper"
-};
+var _hoisted_9 = [_hoisted_8];
 var _hoisted_10 = ["onClick"];
 
 var _hoisted_11 = /*#__PURE__*/_withScopeId(function () {
@@ -19570,7 +19573,7 @@ var _hoisted_11 = /*#__PURE__*/_withScopeId(function () {
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
     "stroke-width": "2",
-    d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+    d: "M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
   })], -1
   /* HOISTED */
   );
@@ -19590,39 +19593,19 @@ var _hoisted_14 = /*#__PURE__*/_withScopeId(function () {
     "stroke-linecap": "round",
     "stroke-linejoin": "round",
     "stroke-width": "2",
-    d: "M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
-  })], -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_15 = [_hoisted_14];
-var _hoisted_16 = ["onClick"];
-
-var _hoisted_17 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    "class": "h-6 w-6",
-    fill: "none",
-    viewBox: "0 0 24 24",
-    stroke: "currentColor"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-    "stroke-linecap": "round",
-    "stroke-linejoin": "round",
-    "stroke-width": "2",
     d: "M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
   })], -1
   /* HOISTED */
   );
 });
 
-var _hoisted_18 = [_hoisted_17];
-var _hoisted_19 = {
+var _hoisted_15 = [_hoisted_14];
+var _hoisted_16 = {
   key: 0,
   "class": "flex h-3 w-3 ping-alert"
 };
 
-var _hoisted_20 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_17 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"
   }, null, -1
@@ -19630,7 +19613,7 @@ var _hoisted_20 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_21 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_18 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "relative inline-flex rounded-full h-3 w-3 bg-blue-500"
   }, null, -1
@@ -19638,12 +19621,38 @@ var _hoisted_21 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_22 = [_hoisted_20, _hoisted_21];
-var _hoisted_23 = {
+var _hoisted_19 = [_hoisted_17, _hoisted_18];
+var _hoisted_20 = {
+  "class": "font-thin px-2 text-md pb-4 submit-label"
+};
+
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add Row ");
+
+var _hoisted_22 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    "class": "h-5 w-5",
+    viewBox: "0 0 20 20",
+    fill: "currentColor"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+    "fill-rule": "evenodd",
+    d: "M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z",
+    "clip-rule": "evenodd"
+  }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+    "fill-rule": "evenodd",
+    d: "M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z",
+    "clip-rule": "evenodd"
+  })], -1
+  /* HOISTED */
+  );
+});
+
+var _hoisted_23 = [_hoisted_22];
+var _hoisted_24 = {
   "class": "count-box font-normal px-2"
 };
 
-var _hoisted_24 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_25 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "font-thin px-2"
   }, "Possible Answers", -1
@@ -19651,13 +19660,13 @@ var _hoisted_24 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_25 = {
+var _hoisted_26 = {
   key: 0,
   "class": "bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 alert",
   role: "alert"
 };
 
-var _hoisted_26 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_27 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
     "class": "font-bold"
   }, "Almost!", -1
@@ -19665,22 +19674,22 @@ var _hoisted_26 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_27 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_28 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Make sure you have a letter and a result in each field.", -1
   /* HOISTED */
   );
 });
 
-var _hoisted_28 = [_hoisted_26, _hoisted_27];
-var _hoisted_29 = {
+var _hoisted_29 = [_hoisted_27, _hoisted_28];
+var _hoisted_30 = {
   key: 1,
   "class": "answers-box bg-white rounded-lg shadow p-4"
 };
-var _hoisted_30 = {
+var _hoisted_31 = {
   "class": "font-thin px-2 pb-4 text-lg"
 };
 
-var _hoisted_31 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_32 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
     "class": "font-bold"
   }, "Most likely answers...", -1
@@ -19688,7 +19697,7 @@ var _hoisted_31 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_32 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_33 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", {
     style: {
       "margin-bottom": "15px",
@@ -19699,7 +19708,7 @@ var _hoisted_32 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_33 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_34 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
     "class": "font-bold"
   }, "Best answers for narrowing down options...", -1
@@ -19708,11 +19717,7 @@ var _hoisted_33 = /*#__PURE__*/_withScopeId(function () {
 });
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[0] || (_cache[0] = function () {
-      return $options.submit && $options.submit.apply($options, arguments);
-    })
-  }, _hoisted_6)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.guesses, function (guess, guessIndex) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.guesses, function (guess, guessIndex) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["guess-row flex", 'guess-row-' + guessIndex]),
       key: guessIndex
@@ -19724,31 +19729,32 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["h-16 w-16 border mx-2 rounded-lg flex items-center text-center font-bold text-3xl uppercase", 'result' + letter.result]),
         "onUpdate:modelValue": function onUpdateModelValue($event) {
           return letter.value = $event;
-        }
+        },
+        maxlength: "1"
       }, null, 10
       /* CLASS, PROPS */
-      , _hoisted_8), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, letter.value]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      , _hoisted_5), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, letter.value]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         onClick: function onClick($event) {
           return letter.result = 1;
         },
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(letter.result === 1 ? 'button-active' : 'button-inactive')
-      }, _hoisted_12, 10
+      }, _hoisted_9, 10
       /* CLASS, PROPS */
-      , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      , _hoisted_7), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         onClick: function onClick($event) {
           return letter.result = 2;
         },
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(letter.result === 2 ? 'button-active' : 'button-inactive')
-      }, _hoisted_15, 10
+      }, _hoisted_12, 10
       /* CLASS, PROPS */
-      , _hoisted_13), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         onClick: function onClick($event) {
           return letter.result = 3;
         },
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(letter.result === 3 ? 'button-active' : 'button-inactive')
-      }, _hoisted_18, 10
+      }, _hoisted_15, 10
       /* CLASS, PROPS */
-      , _hoisted_16)]), letter.alert ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_19, _hoisted_22)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+      , _hoisted_13)]), letter.alert ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_16, _hoisted_19)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
     }), 128
     /* KEYED_FRAGMENT */
     ))], 2
@@ -19756,7 +19762,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     );
   }), 128
   /* KEYED_FRAGMENT */
-  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $options.submit && $options.submit.apply($options, arguments);
+    })
+  }, _hoisted_23)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
     name: "slide-fade",
     mode: "out-in",
     "class": "count-number"
@@ -19772,7 +19782,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  }), _hoisted_24]), $data.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_25, _hoisted_28)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.options ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.options, function (option, index) {
+  }), _hoisted_25]), $data.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_26, _hoisted_29)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.options ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [_hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.options, function (option, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
       key: index
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option.word), 1
@@ -19780,7 +19790,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     );
   }), 128
   /* KEYED_FRAGMENT */
-  ))]), _hoisted_32, _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.bestGuess, function (guess, index) {
+  ))]), _hoisted_33, _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.bestGuess, function (guess, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
       key: index
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(guess.word), 1
@@ -19862,7 +19872,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.guess-wrapper[data-v-ed95b7c0] {\n    padding-bottom: 41px;\n    position: relative;\n}\n.letter[data-v-ed95b7c0] {\n    position: relative;\n}\n.letter .button-wrapper[data-v-ed95b7c0] {\n    position: absolute;\n    bottom: -35px;\n    left: 4px;\n}\n.button-wrapper button[data-v-ed95b7c0] {\n    transition: all .3s ease;\n    opacity: .3;\n}\n.button-wrapper .button-inactive[data-v-ed95b7c0] {\n    opacity: .3;\n}\n.button-wrapper .button-active[data-v-ed95b7c0] {\n    opacity: 1;\n}\n.guess-label[data-v-ed95b7c0] {\n    position: relative;\n}\n.guess-label button[data-v-ed95b7c0] {\n    position: absolute;\n    right: 10px;\n    top: 5px;\n}\n.result1[data-v-ed95b7c0] {\n    background: green;\n    color: #fff;\n}\n.result2[data-v-ed95b7c0] {\n    background: grey;\n    color: #fff;\n}\n.result3[data-v-ed95b7c0] {\n    background: #c9b458;;\n    color: #fff;\n}\n.guess-wrapper .alert[data-v-ed95b7c0] {\n    position: absolute;\n    bottom: -90px;\n    left: 0px;\n    width: 100%;\n    transition: all .2s ease;\n}\n.ping-alert[data-v-ed95b7c0] {\n    position: absolute;\n    top: -4px;\n    right: 2px;\n}\n.guess-row[data-v-ed95b7c0] {\n    margin-top: 40px;\n}\n.guess-row-0[data-v-ed95b7c0] {\n    margin-top: 0px;\n}\n.count-box[data-v-ed95b7c0] {\n    text-align: center;\n    position: absolute;\n    bottom: -55px;\n    left: 0px;\n    padding: 15px;\n    right: 0px;\n    display: flex;\n    justify-content: center;\n}\n.slide-fade-enter-active[data-v-ed95b7c0] {\n    transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-ed95b7c0] {\n    transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-ed95b7c0], .slide-fade-leave-to[data-v-ed95b7c0] {\n    opacity: 0;\n}\n.count-number[data-v-ed95b7c0] {\n    padding-right: 5px;\n}\n.answers-box[data-v-ed95b7c0] {\n    position: absolute;\n    right: -100%;\n    top: 0px;\n    width: 95%;\n}\n.answers-box span[data-v-ed95b7c0] {\n    padding-right: 5px;\n    display: inline-block;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.guess-wrapper[data-v-ed95b7c0] {\n    padding-bottom: 0px;\n    position: relative;\n}\n.letter[data-v-ed95b7c0] {\n    position: relative;\n}\n.letter .button-wrapper[data-v-ed95b7c0] {\n    position: absolute;\n    bottom: -35px;\n    left: 4px;\n}\n.button-wrapper button[data-v-ed95b7c0] {\n    transition: all .3s ease;\n    opacity: .3;\n}\n.button-wrapper .button-inactive[data-v-ed95b7c0] {\n    opacity: .3;\n}\n.button-wrapper .button-active[data-v-ed95b7c0] {\n    opacity: 1;\n}\n.guess-label[data-v-ed95b7c0] {\n    position: relative;\n}\n.guess-label button[data-v-ed95b7c0] {\n    position: absolute;\n    right: 10px;\n    top: 5px;\n}\n.result1[data-v-ed95b7c0] {\n    background: green;\n    color: #fff;\n}\n.result2[data-v-ed95b7c0] {\n    background: grey;\n    color: #fff;\n}\n.result3[data-v-ed95b7c0] {\n    background: #c9b458;;\n    color: #fff;\n}\n.guess-wrapper .alert[data-v-ed95b7c0] {\n    position: absolute;\n    bottom: -90px;\n    left: 0px;\n    width: 100%;\n    transition: all .2s ease;\n}\n.ping-alert[data-v-ed95b7c0] {\n    position: absolute;\n    top: -4px;\n    right: 2px;\n}\n.guess-row[data-v-ed95b7c0] {\n    margin-top: 40px;\n}\n.guess-row-0[data-v-ed95b7c0] {\n    margin-top: 0px;\n}\n.count-box[data-v-ed95b7c0] {\n    text-align: center;\n    position: absolute;\n    bottom: -55px;\n    left: 0px;\n    padding: 15px;\n    right: 0px;\n    display: flex;\n    justify-content: center;\n}\n.slide-fade-enter-active[data-v-ed95b7c0] {\n    transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-ed95b7c0] {\n    transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-ed95b7c0], .slide-fade-leave-to[data-v-ed95b7c0] {\n    opacity: 0;\n}\n.count-number[data-v-ed95b7c0] {\n    padding-right: 5px;\n}\n.answers-box[data-v-ed95b7c0] {\n    position: absolute;\n    right: -100%;\n    top: 0px;\n    width: 95%;\n}\n.answers-box span[data-v-ed95b7c0] {\n    padding-right: 5px;\n    display: inline-block;\n}\n.submit-label[data-v-ed95b7c0] {\n    position: relative;\n    text-align: right;\n    padding-right: 40px;\n    padding-top: 3px;\n    font-style: italic;\n    margin-top: 35px;\n}\n.submit-label button[data-v-ed95b7c0] {\n    position: absolute;\n    right: 10px;\n    top: 5px;\n}\n@media only screen and (max-width: 1200px) {\n.answers-box[data-v-ed95b7c0] {\n        position: relative;\n        right: 0px;\n        width: 100%;\n}\n.w-16[data-v-ed95b7c0] {\n        width: 3rem;\n}\n.w-6[data-v-ed95b7c0] {\n        width: 1rem;\n}\n.letter .button-wrapper[data-v-ed95b7c0] {\n        position: absolute;\n        bottom: -30px;\n        left: 10px;\n}\n.fixed[data-v-ed95b7c0] {\n        min-height: 100vh;\n        position: relative;\n}\n.count-box[data-v-ed95b7c0] {\n        position: relative;\n        bottom: 0px;\n}\n.wordle-buster-wrapper[data-v-ed95b7c0] {\n        padding: 15px;\n}\n.guess-wrapper[data-v-ed95b7c0] {\n        padding-bottom: 15px;\n        position: relative;\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

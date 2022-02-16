@@ -452,9 +452,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-full {
   height: 100%;
 }
-.h-5 {
-  height: 1.25rem;
-}
 .h-16 {
   height: 4rem;
 }
@@ -464,11 +461,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-3 {
   height: 0.75rem;
 }
+.h-5 {
+  height: 1.25rem;
+}
 .w-full {
   width: 100%;
-}
-.w-5 {
-  width: 1.25rem;
 }
 .w-16 {
   width: 4rem;
@@ -478,6 +475,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .w-3 {
   width: 0.75rem;
+}
+.w-5 {
+  width: 1.25rem;
 }
 @-webkit-keyframes ping {
 
