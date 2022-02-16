@@ -7,6 +7,8 @@
         <title>Wordle Buster</title>
 
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        
+        <link href="https://i.imgur.com/whUlUOW.png" rel="icon shortcut" sizes="3232">
     </head>
     <body class="antialiased">
         <div id="app"></div>
