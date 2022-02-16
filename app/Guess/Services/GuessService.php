@@ -21,6 +21,10 @@ class GuessService
 
         foreach($guessArray as $guess) {
             foreach($guess as $index => $letter) {
+                if(strlen($letter['value']) != 1) {
+                    die;
+                }
+
                 if($letter['result'] == 1) {
                     $correctLetters[$index] = $letter['value'];
                 } else if($letter['result'] == 2) {
