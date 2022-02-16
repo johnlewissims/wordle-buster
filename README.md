@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.imgur.com/8OZBPX6.jpeg"></p>
+<p align="center"><img src="https://i.imgur.com/8OZBPX6.jpeg" alt="wordle buster logo" style="width: 150px;"></p>
 
 ## Wordle Buster
 
