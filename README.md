@@ -11,7 +11,7 @@
 
 ## Word Library
 
-<p>The Library that Wordle Buster uses comes from <a href="https://sourceforge.net/projects/mysqlenglishdictionary/files/">this SQL file</a> on SourceForge. I updated this file to extract all 5 letter words that don't contain special characters or spaces.</p>
+<p>The Library that Wordle Buster uses comes from <a href="https://sourceforge.net/projects/mysqlenglishdictionary/files/">this SQL file</a> on SourceForge. The file was updated to extract all 5 letter words that did't contain special characters or spaces.</p>
 
 <p>The Library pulled word popularity from DataMuse's <a href="https://www.datamuse.com/api/">public word search API</a>.</p>
 
