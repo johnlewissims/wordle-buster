@@ -26,3 +26,5 @@
 <p>If you see an issue or have a feature request, please feel free to create an issue.</p>
 
 <p>If you'd like to contribute, please create an issue first, thenm create a PR just to give everyone context for what the PR addresses.</p>
+
+<p>If you're interested in the database itself, there is a copy of the words table under words.sql in the repo.</p>
