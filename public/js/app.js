@@ -19626,7 +19626,11 @@ var _hoisted_20 = {
   "class": "font-thin px-2 text-md pb-4 submit-label"
 };
 
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add Row ");
+var _hoisted_21 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Add Row", -1
+  /* HOISTED */
+  );
+});
 
 var _hoisted_22 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
@@ -19733,21 +19737,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         maxlength: "1"
       }, null, 10
       /* CLASS, PROPS */
-      , _hoisted_5), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, letter.value]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      , _hoisted_5), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, letter.value]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
         onClick: function onClick($event) {
           return letter.result = 1;
         },
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(letter.result === 1 ? 'button-active' : 'button-inactive')
       }, _hoisted_9, 10
       /* CLASS, PROPS */
-      , _hoisted_7), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      , _hoisted_7), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
         onClick: function onClick($event) {
           return letter.result = 2;
         },
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(letter.result === 2 ? 'button-active' : 'button-inactive')
       }, _hoisted_12, 10
       /* CLASS, PROPS */
-      , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
         onClick: function onClick($event) {
           return letter.result = 3;
         },
@@ -19872,7 +19876,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.guess-wrapper[data-v-ed95b7c0] {\n    padding-bottom: 0px;\n    position: relative;\n}\n.letter[data-v-ed95b7c0] {\n    position: relative;\n}\n.letter .button-wrapper[data-v-ed95b7c0] {\n    position: absolute;\n    bottom: -35px;\n    left: 4px;\n}\n.button-wrapper button[data-v-ed95b7c0] {\n    transition: all .3s ease;\n    opacity: .3;\n}\n.button-wrapper .button-inactive[data-v-ed95b7c0] {\n    opacity: .3;\n}\n.button-wrapper .button-active[data-v-ed95b7c0] {\n    opacity: 1;\n}\n.guess-label[data-v-ed95b7c0] {\n    position: relative;\n}\n.guess-label button[data-v-ed95b7c0] {\n    position: absolute;\n    right: 10px;\n    top: 5px;\n}\n.result1[data-v-ed95b7c0] {\n    background: green;\n    color: #fff;\n}\n.result2[data-v-ed95b7c0] {\n    background: grey;\n    color: #fff;\n}\n.result3[data-v-ed95b7c0] {\n    background: #c9b458;;\n    color: #fff;\n}\n.guess-wrapper .alert[data-v-ed95b7c0] {\n    position: absolute;\n    bottom: -90px;\n    left: 0px;\n    width: 100%;\n    transition: all .2s ease;\n}\n.ping-alert[data-v-ed95b7c0] {\n    position: absolute;\n    top: -4px;\n    right: 2px;\n}\n.guess-row[data-v-ed95b7c0] {\n    margin-top: 40px;\n}\n.guess-row-0[data-v-ed95b7c0] {\n    margin-top: 0px;\n}\n.count-box[data-v-ed95b7c0] {\n    text-align: center;\n    position: absolute;\n    bottom: -55px;\n    left: 0px;\n    padding: 15px;\n    right: 0px;\n    display: flex;\n    justify-content: center;\n}\n.slide-fade-enter-active[data-v-ed95b7c0] {\n    transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-ed95b7c0] {\n    transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-ed95b7c0], .slide-fade-leave-to[data-v-ed95b7c0] {\n    opacity: 0;\n}\n.count-number[data-v-ed95b7c0] {\n    padding-right: 5px;\n}\n.answers-box[data-v-ed95b7c0] {\n    position: absolute;\n    right: -100%;\n    top: 0px;\n    width: 95%;\n}\n.answers-box span[data-v-ed95b7c0] {\n    padding-right: 5px;\n    display: inline-block;\n}\n.submit-label[data-v-ed95b7c0] {\n    position: relative;\n    text-align: right;\n    padding-right: 40px;\n    padding-top: 3px;\n    font-style: italic;\n    margin-top: 35px;\n}\n.submit-label button[data-v-ed95b7c0] {\n    position: absolute;\n    right: 10px;\n    top: 5px;\n}\n@media only screen and (max-width: 1200px) {\n.answers-box[data-v-ed95b7c0] {\n        position: relative;\n        right: 0px;\n        width: 100%;\n}\n.w-16[data-v-ed95b7c0] {\n        width: 3rem;\n}\n.w-6[data-v-ed95b7c0] {\n        width: 1rem;\n}\n.letter .button-wrapper[data-v-ed95b7c0] {\n        position: absolute;\n        bottom: -30px;\n        left: 10px;\n}\n.fixed[data-v-ed95b7c0] {\n        min-height: 100vh;\n        position: relative;\n}\n.count-box[data-v-ed95b7c0] {\n        position: relative;\n        bottom: 0px;\n}\n.wordle-buster-wrapper[data-v-ed95b7c0] {\n        padding: 15px;\n}\n.guess-wrapper[data-v-ed95b7c0] {\n        padding-bottom: 15px;\n        position: relative;\n}\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.guess-wrapper[data-v-ed95b7c0] {\n    padding-bottom: 0px;\n    position: relative;\n}\n.letter[data-v-ed95b7c0] {\n    position: relative;\n}\n.letter .button-wrapper[data-v-ed95b7c0] {\n    display: flex;\n    position: absolute;\n    bottom: -35px;\n    left: 4px;\n}\n.button-wrapper span[data-v-ed95b7c0] {\n    transition: all .3s ease;\n    opacity: .3;\n}\n.button-wrapper .button-inactive[data-v-ed95b7c0] {\n    opacity: .3;\n}\n.button-wrapper .button-active[data-v-ed95b7c0] {\n    opacity: 1;\n}\n.guess-label[data-v-ed95b7c0] {\n    position: relative;\n}\n.guess-label span[data-v-ed95b7c0] {\n    position: absolute;\n    right: 10px;\n    top: 5px;\n}\n.result1[data-v-ed95b7c0] {\n    background: green;\n    color: #fff;\n}\n.result2[data-v-ed95b7c0] {\n    background: grey;\n    color: #fff;\n}\n.result3[data-v-ed95b7c0] {\n    background: #c9b458;;\n    color: #fff;\n}\n.guess-wrapper .alert[data-v-ed95b7c0] {\n    position: absolute;\n    bottom: -90px;\n    left: 0px;\n    width: 100%;\n    transition: all .2s ease;\n}\n.ping-alert[data-v-ed95b7c0] {\n    position: absolute;\n    top: -4px;\n    right: 2px;\n}\n.guess-row[data-v-ed95b7c0] {\n    margin-top: 40px;\n}\n.guess-row-0[data-v-ed95b7c0] {\n    margin-top: 0px;\n}\n.count-box[data-v-ed95b7c0] {\n    text-align: center;\n    position: absolute;\n    bottom: -55px;\n    left: 0px;\n    padding: 15px;\n    right: 0px;\n    display: flex;\n    justify-content: center;\n}\n.slide-fade-enter-active[data-v-ed95b7c0] {\n    transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-ed95b7c0] {\n    transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-ed95b7c0], .slide-fade-leave-to[data-v-ed95b7c0] {\n    opacity: 0;\n}\n.count-number[data-v-ed95b7c0] {\n    padding-right: 5px;\n}\n.answers-box[data-v-ed95b7c0] {\n    position: absolute;\n    right: -100%;\n    top: 0px;\n    width: 95%;\n}\n.answers-box span[data-v-ed95b7c0] {\n    padding-right: 5px;\n    display: inline-block;\n}\n.submit-label[data-v-ed95b7c0] {\n    position: relative;\n    text-align: right;\n    padding-right: 0px;\n    padding-top: 3px;\n    font-style: italic;\n    margin-top: 35px;\n}\n.submit-label span[data-v-ed95b7c0] {\n    position: absolute;\n    right: 25px;\n    top: 5px;\n}\n.submit-label button[data-v-ed95b7c0] {\n    margin-top: 3px;\n}\n@media only screen and (max-width: 1200px) {\n.answers-box[data-v-ed95b7c0] {\n        position: relative;\n        right: 0px;\n        width: 100%;\n}\n.w-16[data-v-ed95b7c0] {\n        width: 3rem;\n}\n.w-6[data-v-ed95b7c0] {\n        width: 1rem;\n}\n.letter .button-wrapper[data-v-ed95b7c0] {\n        display: flex;\n        position: absolute;\n        bottom: -30px;\n        left: 10px;\n}\n.fixed[data-v-ed95b7c0] {\n        min-height: 100vh;\n        position: relative;\n}\n.count-box[data-v-ed95b7c0] {\n        position: relative;\n        bottom: 0px;\n}\n.wordle-buster-wrapper[data-v-ed95b7c0] {\n        padding: 15px;\n}\n.guess-wrapper[data-v-ed95b7c0] {\n        padding-bottom: 15px;\n        position: relative;\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

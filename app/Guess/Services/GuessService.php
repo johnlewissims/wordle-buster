@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 class GuessService
 {
 
-    const BASE_WHERE_POSITION_IS = " AND POSITION('letter' IN words.word) = position";
-    const BASE_WHERE_POSITION_IS_NOT = " AND POSITION('letter' IN words.word) != position";
-    const BASE_WHERE_CONTAINS = " AND POSITION('letter' IN words.word) != 0";
-    const BASE_WHERE_DOES_NOT_CONTAIN = " AND POSITION('letter' IN words.word) = 0";
+    const BASE_WHERE_POSITION_IS = " AND LOCATE('letter', words.word, position) = position";
+    const BASE_WHERE_POSITION_IS_NOT = " AND LOCATE('letter', words.word, position) != position";
+    const BASE_WHERE_CONTAINS = " AND LOCATE('letter', words.word) != 0";
+    const BASE_WHERE_DOES_NOT_CONTAIN = " AND LOCATE('letter', words.word) = 0";
     const ORDER_BY = " ORDER BY score DESC";
 
     public function sortLetters($guessArray){
