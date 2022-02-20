@@ -27,8 +27,16 @@ class GuessService
 
                 if($letter['result'] == 1) {
                     $correctLetters[$index] = $letter['value'];
+
+                    // Remove Letter From Blacklist if Correct
+                    if (($key = array_search($letter['value'], $blacklistedLetters)) !== false) {
+                        unset($blacklistedLetters[$key]);
+                    }          
                 } else if($letter['result'] == 2) {
-                    array_push($blacklistedLetters, $letter['value']);
+                    // If Letter is Already in correctLetters Array, Do Not Blacklist
+                    if(!in_array($letter['value'], $correctLetters)) {
+                        array_push($blacklistedLetters, $letter['value']);
+                    }
                 } else if($letter['result'] == 3) {
                     array_push($incorrectlyPlacedLetters[$index], $letter['value']);
                 }
