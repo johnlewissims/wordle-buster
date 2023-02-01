@@ -2,7 +2,7 @@
 
 ## Wordle Buster
 
-<p>Wordle Buster is a companion tool for the popular online word game Wordle. The goal of this repo is to help take some of the annoying legwork out of playing the game.  Instead of spending 15 minutes racking your mind for words, you can focus on which words are most likely to help you find the answer. Some of the app's features include...</p>
+<p><a href="https://wordle-buster.com/">Wordle Buster</a> is a companion tool for the popular online word game Wordle. The goal of this repo is to help take some of the annoying legwork out of playing the game.  Instead of spending 15 minutes racking your mind for words, you can focus on which words are most likely to help you find the answer. Some of the app's features include...</p>
 
 - Possible Answers Count
 - List of Most Probable Answers Based on Word Popularity
