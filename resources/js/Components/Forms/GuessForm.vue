@@ -9,10 +9,12 @@
                     <div class="guess-row flex" :class="'guess-row-' + guessIndex" v-for="(guess, guessIndex) in guesses" :key="guessIndex">
                         <div class="letter" v-for="(letter, index) in guess" :key="index">
                             <input 
+                                :ref="`input-${guessIndex}-${index}`"
                                 class="h-16 w-16 border mx-2 rounded-lg flex items-center text-center font-bold text-3xl uppercase"
                                 :class="'result' + letter.result"
                                 v-model="letter.value"
                                 maxlength="1"
+                                @keyup="handleKeyUp($event, guessIndex, index)"
                             >
                             <div class="button-wrapper">
                                 <span @click="letter.result = 1" :class="(letter.result === 1) ? 'button-active' : 'button-inactive'">
@@ -133,7 +135,24 @@
                     })
                 });
                 return this.error;
-            }
+            },
+            handleKeyUp(event, guessRowIndex, letterIndex) {
+                const nextRef = `input-${guessRowIndex}-${letterIndex + 1}`;
+                const prevRef = `input-${guessRowIndex}-${letterIndex - 1}`;
+                const key = event.key;
+
+                if (key === 'Backspace' && this.guesses[guessRowIndex][letterIndex].value === '') {
+                    // Focus on the previous field if it exists
+                    if (letterIndex > 0 && this.$refs[prevRef]) {
+                        this.$refs[prevRef][0].focus();
+                    }
+                } else if (key.match(/[a-zA-Z]/) && key.length === 1) {
+                    // Focus on the next field if it exists
+                    if (letterIndex < this.guesses[guessRowIndex].length - 1 && this.$refs[nextRef]) {
+                        this.$refs[nextRef][0].focus();
+                    }
+                }
+            },
         }
     };
 </script>
