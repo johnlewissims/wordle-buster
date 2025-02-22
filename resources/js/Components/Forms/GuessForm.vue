@@ -1,4 +1,4 @@
-<template> 
+<template>
     <div>
         <div class="fixed inset-0 w-full h-full flex bg-blue-100 items-center justify-center wordle-buster-wrapper">
             <div class="bg-white rounded-lg shadow p-4 guess-wrapper" x-data="app()">
@@ -8,7 +8,7 @@
                 <div class="">
                     <div class="guess-row flex" :class="'guess-row-' + guessIndex" v-for="(guess, guessIndex) in guesses" :key="guessIndex">
                         <div class="letter" v-for="(letter, index) in guess" :key="index">
-                            <input 
+                            <input
                                 :ref="`input-${guessIndex}-${index}`"
                                 class="h-16 w-16 border mx-2 rounded-lg flex items-center text-center font-bold text-3xl uppercase"
                                 :class="'result' + letter.result"
@@ -37,7 +37,7 @@
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
                             </span>
-                        </div>                                
+                        </div>
                     </div>
                 </div>
                 <div class="font-thin px-2 text-md pb-4 submit-label">
@@ -56,7 +56,7 @@
                         <div :key="count" class="font-bold px-2">
                             {{ count }}
                         </div>
-                    </transition> 
+                    </transition>
                     <span class="font-thin px-2">Possible Answers</span>
                 </div>
 
@@ -67,7 +67,7 @@
 
                 <div class="answers-box bg-white rounded-lg shadow p-4" v-if="options">
                     <div class="font-thin px-2 pb-4 text-lg">
-                        <h4 class="font-bold">Most likely answers...</h4> 
+                        <h4 class="font-bold">Most likely answers...</h4>
                         <p><span v-for="(option, index) in options" :key="index"> {{option.word}} </span></p>
                         <hr style="margin-bottom: 15px; margin-top: 15px;">
                         <h4 class="font-bold">Best answers for narrowing down options...</h4>
@@ -159,20 +159,21 @@
 
 <style scoped>
 
+/*test again */
 .guess-wrapper {
     padding-bottom: 0px;
     position: relative;
 }
 
 .letter {
-    position: relative;   
+    position: relative;
 }
 
 .letter .button-wrapper {
     display: flex;
     position: absolute;
     bottom: -35px;
-    left: 4px;    
+    left: 4px;
 }
 
 .button-wrapper span {
@@ -308,14 +309,14 @@
         position: absolute;
         bottom: -30px;
         left: 10px;
-    }    
+    }
     .fixed {
         min-height: 100vh;
         position: relative;
     }
     .count-box {
         position: relative;
-        bottom: 0px;        
+        bottom: 0px;
     }
     .wordle-buster-wrapper {
         padding: 15px;
@@ -323,7 +324,7 @@
     .guess-wrapper {
         padding-bottom: 15px;
         position: relative;
-    }    
+    }
 }
 
 </style>
