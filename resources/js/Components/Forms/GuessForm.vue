@@ -157,7 +157,7 @@
     };
 </script>
 
-<style scoped>
+<style>
 
 /*test again */
 .guess-wrapper {

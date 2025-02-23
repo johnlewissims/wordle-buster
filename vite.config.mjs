@@ -1,15 +1,15 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
-import path from 'path';
+import path from 'node:path';
 
 export default defineConfig({
     plugins: [
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: [
-                'resources/js/Components/**/*.vue',  // Add this line
-                'resources/js/Components/Forms/**/*.vue',  // And this one
+                'resources/js/Components/**/*.vue',
+                'resources/js/Components/Forms/**/*.vue',
                 'resources/**/*.php',
             ],
         }),
@@ -29,6 +29,13 @@ export default defineConfig({
     },
     server: {
         host: '0.0.0.0',
+        port: 5173,
+        strictPort: true,
+        hmr: {
+            host: 'localhost',
+            port: 5173,
+            protocol: 'ws',
+        },
         watch: {
             usePolling: true,
             interval: 1000,
@@ -39,3 +46,4 @@ export default defineConfig({
         }
     }
 });
+
