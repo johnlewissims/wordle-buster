@@ -26,26 +26,37 @@ A Laravel + Vue 3 + Vite + TailwindCSS application.
 ## Getting Started
 
 ### 1. Install Backend Dependencies
-```
-./vendor/bin/sail composer install
-```
 
-### 2. Start Docker Services (Laravel Sail)
-```
+````
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/var/www/html \
+    -w /var/www/html \
+    laravelsail/php83-composer:latest \
+    composer install
+
 ./vendor/bin/sail up -d
-```
+./vendor/bin/sail composer install
 
-### 3. Install Frontend Dependencies
+// Run migrations
+./vendor/bin/sail artisan migrate
+
+// Seed the database
+./vendor/bin/sail artisan db:seed
+
+````
+
+### 2. Install Frontend Dependencies
 ```
 npm install
 ```
 
-### 4. Run Vite Dev Server (Outside Docker)
+### 3. Run Vite Dev Server (Outside Docker)
 ```
 npm run dev
 ```
 
-### 5. Access the App
+### 4. Access the App
 - http://localhost
 
 ---
