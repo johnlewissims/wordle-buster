@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-    import GuestForm from './Forms/GuessForm.vue';
+    import GuestForm from './GuessForm.vue';
     export default {
         components: { GuestForm },
         data () {
