@@ -2,60 +2,34 @@
 
 namespace App\Guess\Services;
 
-use App\Models\Word;
-use Illuminate\Database\Eloquent\Builder;
+use App\Guess\Actions\SortLettersAction;
+use App\Guess\Queries\WordQuery;
+use App\Guess\Requests\GuessRequest;
 
 class GuessService
 {
-    public function sortLetters($guessArray)
+    public function __construct(
+        private WordQuery $wordQuery,
+        private SortLettersAction $sortLettersAction,
+    )
     {
-        $blacklistedLetters = [];
-        $incorrectlyPlacedLetters = [[], [], [], [], []];
-        $correctLetters = ['', '', '', '', ''];
-
-        foreach ($guessArray as $guess) {
-            foreach ($guess as $index => $letter) {
-                if (strlen($letter['value']) !== 1) continue;
-
-                if ($letter['result'] === 1) {
-                    $correctLetters[$index] = $letter['value'];
-                    $blacklistedLetters = array_diff($blacklistedLetters, [$letter['value']]);
-                } elseif ($letter['result'] === 2) {
-                    if (!in_array($letter['value'], $correctLetters)) {
-                        $blacklistedLetters[] = $letter['value'];
-                    }
-                } elseif ($letter['result'] === 3) {
-                    $incorrectlyPlacedLetters[$index][] = $letter['value'];
-                }
-            }
-        }
-
-        return compact('blacklistedLetters', 'incorrectlyPlacedLetters', 'correctLetters');
     }
 
-    public function makeQuery($letterArray)
+    public function makeGuess(GuessRequest $request)
     {
-        return Word::query()
-            ->when(!empty(array_filter($letterArray['correctLetters'])), function (Builder $query) use ($letterArray) {
-                foreach ($letterArray['correctLetters'] as $index => $letter) {
-                    if ($letter) {
-                        $query->whereRaw("LOWER(SUBSTRING(word FROM ? FOR 1)) = LOWER(?)", [$index + 1, $letter]);
-                    }
-                }
-            })
-            ->when(!empty($letterArray['blacklistedLetters']), function (Builder $query) use ($letterArray) {
-                foreach ($letterArray['blacklistedLetters'] as $letter) {
-                    $query->whereRaw("LOWER(word) NOT LIKE ?", ['%' . strtolower($letter) . '%']);
-                }
-            })
-            ->when(!empty($letterArray['incorrectlyPlacedLetters']), function (Builder $query) use ($letterArray) {
-                foreach ($letterArray['incorrectlyPlacedLetters'] as $index => $letters) {
-                    foreach ($letters as $letter) {
-                        $query->whereRaw("LOWER(SUBSTRING(word FROM ? FOR 1)) != LOWER(?)", [$index + 1, $letter])
-                            ->whereRaw("LOWER(word) LIKE ?", ['%' . strtolower($letter) . '%']);
-                    }
-                }
-            });
+        $guessData = $request->getGuessData();
+
+        $sortedLetters = $this->sortLettersAction->execute($guessData);
+        $wordQuery = $this->wordQuery->build($sortedLetters);
+
+        $wordModels = $wordQuery->get()->sortByDesc('score');
+        $wordLetterFrequency = $wordQuery->get()->sortByDesc('letter_frequency_score');
+
+        return [
+            'options' => $wordModels->take(20),
+            'best_guess' => $wordLetterFrequency->take(5),
+            'count' => $wordModels->count()
+        ];
     }
 }
 

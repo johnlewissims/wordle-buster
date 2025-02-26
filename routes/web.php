@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
+use App\Guess\Controllers\GuessController;
 
 
 /*
@@ -19,4 +19,4 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::post('/guess', [Controller::class, 'guess']);
+Route::post('/guess', GuessController::class);
