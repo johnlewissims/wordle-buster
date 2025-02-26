@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Guess\Jobs;
 
 use App\Models\Word;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 
-class CalculateLetterFrequencyScore implements ShouldQueue
+class CalculateLetterFrequencyScoreJob implements ShouldQueue
 {
     use Queueable;
 
