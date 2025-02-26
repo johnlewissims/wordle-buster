@@ -16,15 +16,19 @@ class Guess
         $this->guessService = new GuessService();
     }
 
-    public function makeGuess(Request $request) {
+    public function makeGuess(Request $request)
+    {
         $sortedLetters = $this->guessService->sortLetters($request->get('guess'));
-        $query = $this->guessService->makeQuery($sortedLetters);
+        $wordQuery = $this->guessService->makeQuery($sortedLetters);
 
-        $wordData = DB::select($query);
-        $wordModels = Word::hydrate($wordData)->sortByDesc('score');
-        $wordLetterFrequency = Word::hydrate($wordData)->sortByDesc('letter_frequency_score');
+        $wordModels = $wordQuery->get()->sortByDesc('score');
+        $wordLetterFrequency = $wordQuery->get()->sortByDesc('letter_frequency_score');
 
-        return ['options' => $wordModels->take(20), 'best_guess' => $wordLetterFrequency->take(5), 'count' => $wordModels->count()];
+        return [
+            'options' => $wordModels->take(20),
+            'best_guess' => $wordLetterFrequency->take(5),
+            'count' => $wordModels->count()
+        ];
     }
 
     protected function calculateWordFrequency() {
