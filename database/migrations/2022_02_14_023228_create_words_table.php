@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('word');
             $table->float('score');
-            $table->float('letter_frequency_score');
+            $table->decimal('letter_frequency_score', 8, 5);
         });
     }
 
