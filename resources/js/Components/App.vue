@@ -1,12 +1,12 @@
 <template>
     <div>
-        <GuestForm/>
+        <GuessForm/>
     </div>
 </template>
 <script>
     import GuestForm from './GuessForm.vue';
     export default {
-        components: { GuestForm },
+        components: { GuessForm },
         data () {
             return {
             };
